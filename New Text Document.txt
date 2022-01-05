@@ -1,0 +1,152 @@
+QUESTION:  a.Get all the countries from Asia continent /region using Filter function
+
+CODE:
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
+
+// Open a request
+xhr.open("GET", "https://restcountries.com/v2/all");
+
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    let data = JSON.parse(this.response);
+
+    let countryname = data.filter(function (couname) {
+      if (couname.region == "Asia") {
+        console.log(couname.name);
+      }
+    });
+  }
+};
+
+//sent the rquest to server
+xhr.send();
+
+
+DESCRIPTION:
+Please print the above code in the console of browser to find the results using vscode.
+
+
+
+QUESTION:     b.Get all the countries with a population of less than 2 lakhs using Filter function
+
+CODE:
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
+
+// Open a request
+xhr.open("GET", "https://restcountries.com/v2/all");
+
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    let data = JSON.parse(this.response);
+    let countryname = data.filter(function (couname) {
+      if (couname.population <= 200000) {
+        console.log(couname.name);
+      }
+    });
+  }
+};
+
+//sent the rquest to server
+xhr.send();
+
+
+DESCRIPTION:
+Please print the above code in the console of browser to find the results using vscode.
+
+
+
+QUESTION:     c.Print the following details name, capital, flag using forEach function
+
+CODE:
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
+
+// Open a request
+xhr.open("GET", "https://restcountries.com/v2/all");
+
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    let data = JSON.parse(this.response);
+
+data.forEach( (couname)=> {
+  console.log(couname.name+"-"+couname.capital+"->"+couname.flag)
+
+});
+}
+};
+
+//sent the rquest to server
+xhr.send();
+
+
+DESCRIPTION:
+Please print the above code in the console of browser to find the results using vscode.
+
+
+
+
+QUESTION:        d.Print the total population of countries using reduce function
+
+CODE:
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
+
+// Open a request
+xhr.open("GET", "https://restcountries.com/v2/all");
+
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    let data = JSON.parse(this.response);
+
+    let totalpopulation = data.reduce(function (pop, country) {
+      pop = country.population + pop;
+      return pop;
+    }, 0);
+    console.log(totalpopulation);
+  }
+};
+//sent the rquest to server
+xhr.send();
+
+OUTPUT:
+7758589152
+
+DESCRIPTION:
+Please print the above code in the console of browser to find the results using vscode.
+
+
+
+QUESTION:     e.Print the country which uses US Dollars as currency.
+
+CODE:
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
+
+// Open a request
+xhr.open("GET", "https://restcountries.com/v2/all");
+
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    let data = JSON.parse(this.response);
+
+    let countries = data.filter(function (country) {
+      return country.currencies && country.currencies[0].code === 'USD'
+ });
+ console.log(countries);
+}
+};
+
+//sent the rquest to server
+xhr.send();
+
+
+DESCRIPTION:
+Please print the above code in the console of browser to find the results using vscode.
+
